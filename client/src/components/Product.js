@@ -41,14 +41,16 @@ export function Product ({ productos, id, title, price, currency_id, available_q
     // si tiene stock o no.
 
   for(let i = 0; i < productos.length; i++){
-    if(productos[i].id === 'MLA626730861'){
+    // if(productos[i].id === 'MLA626730861'){
       title = productos[i].title;
       price = productos[i].price;
       currency_id = productos[i].currency_id;
       available_quantity = productos[i].available_quantity;
       thumbnail = productos[i].thumbnail;
       condition = productos[i].condition;
-    }
+
+      
+    // }
   }
 
   return (
@@ -91,9 +93,9 @@ export function Product ({ productos, id, title, price, currency_id, available_q
 
 const mapStateToProps = (state) => {
   return {
-    productos: state.productos
+    productos: state.productos.productos
   }
 };
 
 
-export default connect(mapStateToProps)(Product)
+export default connect(mapStateToProps, {})(Product)

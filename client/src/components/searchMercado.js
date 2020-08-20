@@ -4,7 +4,7 @@ import iconSearchH from '../images/iconSearchH.png';
 import { connect } from 'react-redux';
 import { onSearch } from '../actions/actionsMercado.js';
 
-import './searchMercado.css';
+// import './searchMercado.css';
 
 
 function SearchBar({onSearch}) {
