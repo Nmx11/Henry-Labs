@@ -19,7 +19,6 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 require('dotenv').config();
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
 
 // Connects to the data base
 const port = 3001;
