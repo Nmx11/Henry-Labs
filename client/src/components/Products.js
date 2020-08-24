@@ -6,23 +6,43 @@ import { getAll } from '../actions/actionsMercado.js';
 
 function Products({ productos, getAll }) {
   
-//   useEffect(()=>{getAll()},[getAll])   
 
   return (
+    <div className='productsBox'>
+      <span>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filtrar
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/mayorprecio">Mayor precio</a>
+            <a class="dropdown-item" href="#">Menor precio</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+      </span>
+
     <div className='products'>
       {productos.map(p => 
         <Product
           id={p.id}
-          name={p.nombre}
-          img={p.imagen}
+          title={p.title}
+          price = {p.price}
+          thumbnail={p.thumbnail}
+          currency_id ={p.currency_id}
+          condition = {p.condition}
+          available_quantity = {p.available_quantity}
         />
       )}
     </div>
+
+    </div>
   );
 }
+
 const mapStateToProps = (state) => {
   return {
-      productos: state.producto.productos
+      productos: state.productos.productos
   };
 };
 

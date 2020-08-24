@@ -4,4 +4,5 @@ import productos from './reducerMercado';
 
 export default combineReducers({
     productos,
+    // producto,
 });

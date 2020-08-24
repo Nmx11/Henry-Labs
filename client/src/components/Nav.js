@@ -5,7 +5,7 @@ import SearchBar from './searchMercado.js';
 import { connect } from 'react-redux';
 // import { getUserLogged } from '../actions/actionsUser.js';
 
-function Nav({ logged, getUserLogged }) {
+function Nav({ }) {
 
 
 
@@ -20,7 +20,6 @@ function Nav({ logged, getUserLogged }) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
           {/* <a className="dropdown-item" href="/">Inicio</a> */}
-         <a className="dropdown-item" href="/producto">Producto</a>
          
         <SearchBar/>
    

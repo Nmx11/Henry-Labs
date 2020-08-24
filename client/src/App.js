@@ -5,6 +5,8 @@ import Nav from './components/Nav.js';
 import SearchBar from './components/searchMercado.js';
 import Products from './components/Products.js';
 import Product from './components/Product.js';
+import ProductDetail from './components/ProductDetail.js';
+import ProductsMayor from './components/ProductsMayor.js';
 
 
 
@@ -17,18 +19,27 @@ function App() {
 
        <Route
         exact path='/'
-        render={() => <SearchBar/>}
+        render={() => <Products/>}
+      />
+
+        <Route
+        exact path='/producto/detail/:id'
+        component={({match}) => 
+          <ProductDetail id={match.params.id}/>
+        }                   
       />
 
       <Route
-        exact path='/producto'
-        render={() => <Product/>}
+        exact path='/mayorprecio'
+        render={() => <ProductsMayor/>}
       />
-
+{/* 
       <Route
         exact path='/catalogo'
         render={() => <Products/>}
-      />    
+      /> */}
+
+   
        
   
     
