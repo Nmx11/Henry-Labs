@@ -83,7 +83,7 @@ router.get('/', function(req, res) {
 
 router.get('/producto' , function(req, res) {
 
-    console.log(myCache)
+    console.log(myQuery)
     
     return res.json(myCache[myQuery])
 })

@@ -1,43 +1,128 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, setState, getState, useState } from 'react';
 import Product from './Product.js';
-// import './Product.css';
+import store from '../store.js';
+import Footer from './Footer.js';
+import './Products.css';
 import { connect } from 'react-redux';
-import { getAll } from '../actions/actionsMercado.js';
+import SearchBar1 from './searchMercado1';
+import { getAll, getMayor, getMenor, getNew, getUsed, previousPage, nextPage } from '../actions/actionsMercado.js';
 
-function Products({ productos, getAll }) {
+function Products({ productos, getMayor, getMenor, getNew, getUsed, previousPage, nextPage }) {
+
   
 
-  return (
-    <div className='productsBox'>
-      <span>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Filtrar
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/mayorprecio">Mayor precio</a>
-            <a class="dropdown-item" href="#">Menor precio</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+function handleChange(e) {
+
+
+  if(e.target.value === 'new'){
+
+    getNew()
+    
+  }
+
+  if(e.target.value === 'used'){
+
+    getUsed()
+    
+  }
+
+  if(e.target.value === 'menor'){
+
+    getMenor()
+    
+  }
+
+  if(e.target.value === 'mayor'){
+
+    getMayor()
+    
+  }
+
+}
+
+function handleClick1() {
+  previousPage()
+}
+
+function handleClick2() {
+  nextPage()
+}
+
+
+  if(productos.length === 0){
+
+    return (
+      
+      <div>
+       <SearchBar1/>
+      </div>
+   
+      );
+    
+  }
+
+  if(productos.length !== 0){
+    return (
+      <div className='productsBox'>
+
+      <SearchBar1/>
+
+        <div className="filtrar">
+          <select onChange={handleChange}>
+              {/* <option value="value" selected>Filtrar</option> */}
+              <option value="new">Nuevo</option>
+              <option value="used">Usado</option>
+              <option value="menor">Menor precio</option>
+              <option value="mayor">Mayor precio</option>
+          </select>
         </div>
-      </span>
+     
 
-    <div className='products'>
-      {productos.map(p => 
-        <Product
-          id={p.id}
-          title={p.title}
-          price = {p.price}
-          thumbnail={p.thumbnail}
-          currency_id ={p.currency_id}
-          condition = {p.condition}
-          available_quantity = {p.available_quantity}
-        />
-      )}
-    </div>
+      <div className='products'>
+      
+      {productos.slice(0, 30).map((p, index) => (
 
-    </div>
-  );
+           <Product
+           id={p.id}
+           title={p.title}
+           price = {p.price}
+           thumbnail={p.thumbnail}
+           currency_id ={p.currency_id}
+           condition = {p.condition}
+           available_quantity = {p.available_quantity}
+         />
+        ))}
+
+       
+        {/* {productos.map(p => 
+          <Product
+            id={p.id}
+            title={p.title}
+            price = {p.price}
+            thumbnail={p.thumbnail}
+            currency_id ={p.currency_id}
+            condition = {p.condition}
+            available_quantity = {p.available_quantity}
+          />
+        )} */}
+
+      </div>
+
+        <div className="paginas">
+            <a className="paginasA">Paginas:</a>
+            <button type="button" class="btn btn-success" onClick={handleClick1}>1
+            </button>
+            <button  type="button" class="btn btn-success" onClick={handleClick2}>2
+            </button>
+        </div>
+
+      </div>
+    );
+
+  } else {
+    return null;
+  }
+ 
 }
 
 const mapStateToProps = (state) => {
@@ -46,4 +131,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(Products);
+export default connect(mapStateToProps, { getMayor, getMenor, getNew, getUsed, previousPage, nextPage })(Products);

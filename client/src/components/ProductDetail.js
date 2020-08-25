@@ -23,11 +23,6 @@ console.log(price)
   var thumbnail = '';
   var condition = '';
   
-    //   su imagen.
-    // su titulo.
-    // su precio (con la moneda).
-    // su condicion.
-    // si tiene stock o no.
 
   for(let i = 0; i < productos.length; i++){
     if(productos[i].id === id){

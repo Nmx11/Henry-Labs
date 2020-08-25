@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './searchMercado.js';
-// import CategoryList from './CategoryList.js';
-// import Settings from './Settings.js';
 import { connect } from 'react-redux';
-// import { getUserLogged } from '../actions/actionsUser.js';
+import './Nav.css';
+
 
 function Nav({ }) {
 
