@@ -65,7 +65,6 @@ router.get('/', function(req, res) {
                         
                     }
     
-                    // console.log(productos)
                     myCache[myQuery] = productos;  
                     
                     console.log(productos)
