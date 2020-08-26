@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import './ProductDetail.css'
 import { connect } from 'react-redux';
 import { getAll } from '../actions/actionsMercado.js';
 import { Product } from '../components/Product.js';
 import { Card } from 'react-bootstrap';
+import './ProductDetail.css'
 
 function ProductDetail ({ id, productos, getAll }) {
   
