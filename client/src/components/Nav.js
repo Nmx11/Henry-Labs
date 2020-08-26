@@ -17,8 +17,6 @@ function Nav({ }) {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-          {/* <a className="dropdown-item" href="/">Inicio</a> */}
          
         <SearchBar/>
    

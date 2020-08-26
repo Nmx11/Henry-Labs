@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './ProductDetail.css'
 import { connect } from 'react-redux';
 import { getAll } from '../actions/actionsMercado.js';
@@ -9,11 +9,6 @@ function ProductDetail ({ id, productos, getAll }) {
   
 
 useEffect(()=>{getAll()},[getAll])   
-
-
-console.log(productos)
-console.log(id)
-console.log(price)
 
 
   var title = '';
@@ -37,6 +32,7 @@ console.log(price)
 
   return (
     <div>
+
       <div className="mi-contenedor">
         <div className="img-container">
           <img src={thumbnail} alt="Imagen en detalle"/>
@@ -59,18 +55,6 @@ console.log(price)
           </div>
         </div>           
       </div>
-
-    {/* <div className='products'>
-        <Product id="detail"
-          id={id}
-          title={title}
-          price = {price}
-          thumbnail={thumbnail}
-          currency_id ={currency_id}
-          condition = {condition}
-          available_quantity = {available_quantity}
-        />
-    </div> */}
 
     </div>
   )

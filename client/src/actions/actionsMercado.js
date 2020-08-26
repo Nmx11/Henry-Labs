@@ -15,9 +15,6 @@ export function onSearch(query) {
         return fetch(`http://localhost:3001/api/search?query=${query}`)
         .then(res => res.json())
         .then((data) => {
-
-            console.log(data)
-
             dispatch({ type: SEARCH_PRODUCTS, payload: data })
         })
     }
@@ -30,7 +27,6 @@ export function getAll() {
         .then(res => res.json())
         .then((data) => {
             if (data !== undefined) {
-                console.log(data)
                 dispatch({ type: GET_PRODUCTS, payload: data })
             }
         });
@@ -42,9 +38,7 @@ export function getMenor() {
         return fetch(`http://localhost:3001/api/search/producto`)
         .then(res => res.json())
         .then((data) => {
-            if (data !== undefined) {
-                console.log(data)
-                
+            if (data !== undefined) {                
 
                 function selectionSort(data) {
         
@@ -76,9 +70,7 @@ export function getMayor() {
         return fetch(`http://localhost:3001/api/search/producto`)
         .then(res => res.json())
         .then((data) => {
-            if (data !== undefined) {
-                console.log(data)
-                
+            if (data !== undefined) {                
 
                 function selectionSort(data) {
 
@@ -118,12 +110,9 @@ export function getNew() {
         return fetch(`http://localhost:3001/api/search/producto`)
         .then(res => res.json())
         .then((data) => {
-            if (data !== undefined) {
-                console.log(data)
-                
+            if (data !== undefined) {                
 
-                    var arrayNew = [];
-                
+                    var arrayNew = [];                
                 
                     for(var i = 0; i < data.length; i++){
                       if(data[i].condition === 'new'){
@@ -142,12 +131,9 @@ export function getUsed() {
         return fetch(`http://localhost:3001/api/search/producto`)
         .then(res => res.json())
         .then((data) => {
-            if (data !== undefined) {
-                console.log(data)
-                
+            if (data !== undefined) {                
 
-                    var arrayUsed = [];
-                
+                    var arrayUsed = [];                
                 
                     for(var i = 0; i < data.length; i++){
                       if(data[i].condition === 'used'){
@@ -171,11 +157,9 @@ export function previousPage() {
             .then(res => res.json())
             .then((data) => {
                 if (data !== undefined) {
-                    console.log(data)
     
                     var arrayPreviousPage = [];
-                    
-                    
+                                  
                         for(var i = 0; i < data.length; i++){
     
                                 arrayPreviousPage.push(data[i])                      
@@ -194,10 +178,8 @@ export function nextPage() {
         .then(res => res.json())
         .then((data) => {
             if (data !== undefined) {
-                console.log(data)
                 
-                var arrayNextPage = [];
-                
+                var arrayNextPage = [];                
                 
                     for(var i = 30; i < data.length; i++){
                     
@@ -210,29 +192,3 @@ export function nextPage() {
         });
     }
 };
-
-
-// export function previousPage() {
-//     return function(dispatch) {
-//         return fetch(`http://localhost:3001/api/search/producto`, )
-//         .then(res => res.json())
-//         .then((data) => {
-//             if (data !== undefined) {
-//                 console.log(data)
-
-//                 var arrayPreviousPage = [];
-                
-                
-//                     for(var i = 0; i < data.length; i++){
-//                         while(data.length < 30){
-
-//                             arrayPreviousPage.push(data[i])
-//                         }
-                        
-//                     }
-
-//                 dispatch({ type: GET_PREVIOUSPAGE, payload: arrayPreviousPage })
-//             }
-//         });
-//     }
-// };

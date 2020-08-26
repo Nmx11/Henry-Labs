@@ -7,13 +7,11 @@ import {
     GET_USED,
     GET_NEXTPAGE,
     GET_PREVIOUSPAGE,
-    // DETAIL_PRODUCT
 
 } from '../actions/actionsMercado';
 
 const initialState = {
     productos: [],
-    // producto: {}
 }
 
 
@@ -68,14 +66,6 @@ export default (state = initialState, action) => {
             productos: action.payload
         };
     }
-
-    // if (action.type === DETAIL_PRODUCT) {
-    //     return {
-    //         ...state,
-    //         producto: action.payload
-    //     };
-    // }
-    
 
     return state;
 };

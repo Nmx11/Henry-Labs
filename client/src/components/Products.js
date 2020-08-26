@@ -15,27 +15,19 @@ function handleChange(e) {
 
 
   if(e.target.value === 'new'){
-
-    getNew()
-    
+    getNew()    
   }
 
   if(e.target.value === 'used'){
-
-    getUsed()
-    
+    getUsed()    
   }
 
   if(e.target.value === 'menor'){
-
-    getMenor()
-    
+    getMenor()    
   }
 
   if(e.target.value === 'mayor'){
-
-    getMayor()
-    
+    getMayor()    
   }
 
 }
@@ -69,7 +61,6 @@ function handleClick2() {
 
         <div className="filtrar">
           <select onChange={handleChange}>
-              {/* <option value="value" selected>Filtrar</option> */}
               <option value="new">Nuevo</option>
               <option value="used">Usado</option>
               <option value="menor">Menor precio</option>
@@ -92,19 +83,6 @@ function handleClick2() {
            available_quantity = {p.available_quantity}
          />
         ))}
-
-       
-        {/* {productos.map(p => 
-          <Product
-            id={p.id}
-            title={p.title}
-            price = {p.price}
-            thumbnail={p.thumbnail}
-            currency_id ={p.currency_id}
-            condition = {p.condition}
-            available_quantity = {p.available_quantity}
-          />
-        )} */}
 
       </div>
 

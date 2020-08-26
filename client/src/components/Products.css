@@ -1,14 +1,3 @@
-/* .pagesBox{
-    display: flex;
-    flex-direction: column;
-    background-color: blue;
-}
-
-ul{
-    display: flex;
-    flex-direction: row;
-} */
-
 .productsBox{
     margin-top: 100px;    
 }
@@ -30,4 +19,6 @@ ul{
 
 .filtrar{
     background-color: lightgrey;
+    margin-top: 17px;
+    margin-bottom: 17px;
 }

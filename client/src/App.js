@@ -31,8 +31,7 @@ function App() {
             <ProductDetail id={match.params.id}/>
           }                   
         />   
-          
-      
+        
       </header>
     </div>
   );
