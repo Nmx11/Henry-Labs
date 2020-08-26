@@ -1,6 +1,5 @@
 import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
-import SearchBar from './searchMercado.js';
 import defecto from '../images/default.jpg';
 import {Card, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -16,7 +15,7 @@ export function Product ({ productos, id, title, price, currency_id, available_q
     <div>
      
       <Card className="card" style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={thumbnail} style={{ width: '17.9rem', height: '18rem'}}/>
+        <Card.Img variant="top" src={thumbnail || defecto} style={{ width: '17.9rem', height: '18rem'}}/>
         <Card.Body>
             <Card.Title>{title}</Card.Title>
           <Card.Text>
