@@ -151,20 +151,34 @@ export function getUsed() {
     }
 };
 
+var pageCache = [];
+
 export function previousPage() {
-        return function(dispatch) {
+        return function(dispatch, getState) {
             return fetch(`http://localhost:3001/api/search/producto`, )
             .then(res => res.json())
             .then((data) => {
                 if (data !== undefined) {
-    
+
+                    var estado = getState().productos.productos;
+
+                    if(estado === pageCache){
+                        arrayPreviousPage = pageCache;
+                    }
+
+                    if(estado.length > 20){
+                        pageCache = estado;
+                    }
+
                     var arrayPreviousPage = [];
-                                  
-                        for(var i = 0; i < data.length; i++){
+                    
+                    if(pageCache.length > 20) {
+                        for(var i = 0; i < pageCache.length; i++){
     
-                                arrayPreviousPage.push(data[i])                      
-                            
-                        }
+                            arrayPreviousPage.push(pageCache[i])                      
+                        
+                         }
+                    }  
     
                     dispatch({ type: GET_PREVIOUSPAGE, payload: arrayPreviousPage })
                 }
@@ -172,20 +186,46 @@ export function previousPage() {
         }
     };
 
+var pageCacheNext = [];
+
 export function nextPage() {
-    return function(dispatch) {
+    return function(dispatch, getState) {
         return fetch(`http://localhost:3001/api/search/producto`, )
         .then(res => res.json())
         .then((data) => {
             if (data !== undefined) {
+
+                var estado = getState().productos.productos;
+
+                if(estado.length > 20){
+                    pageCache = estado;
+                }            
                 
-                var arrayNextPage = [];                
+                var arrayNextPage = [];
                 
-                    for(var i = 30; i < data.length; i++){
+                if(pageCache.length > 1){
+
+                    for(var i = 30; i < estado.length; i++){
                     
-                        arrayNextPage.push(data[i])
+                        arrayNextPage.push(estado[i])
                     
                     }
+                    
+                } if(estado.length <= 20) {
+
+                    pageCacheNext = estado;
+
+                    for(var i = 0; i < estado.length; i++){
+                        
+                        arrayNextPage.push(estado[i])
+                    
+                    }
+                 
+                } if(estado === pageCacheNext){
+                    arrayNextPage = pageCacheNext;
+                }
+                  
+                  
 
                 dispatch({ type: GET_NEXTPAGE, payload: arrayNextPage })
             }
