@@ -61,6 +61,7 @@ function handleClick2() {
 
         <div className="filtrar">
           <select onChange={handleChange}>
+               <option value="" disabled selected>Filtrar</option>
               <option value="new">Nuevo</option>
               <option value="used">Usado</option>
               <option value="menor">Menor precio</option>
@@ -87,7 +88,7 @@ function handleClick2() {
       </div>
 
         <div className="paginas">
-            <a className="paginasA">Paginas:</a>
+            <a className="paginasA">Páginas:</a>
             <button type="button" class="btn btn-success" onClick={handleClick1}>1
             </button>
             <button  type="button" class="btn btn-success" onClick={handleClick2}>2
