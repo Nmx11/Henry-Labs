@@ -33,72 +33,72 @@ export function getAll() {
     }
 };
 
+function selectionSort(data) {
+        
+    for(var i = 0; i < data.length; i++){ 
+        var min = i;
+        for(var j = i + 1; j < data.length; j++){
+            if(data[j].price < data[min].price){
+                min = j;
+            }
+          }
+          if(min !== i){
+              var aux = data[i];
+              data[i] = data[min];
+              data[min] = aux;
+          }
+     }
+     return data;
+  
+  }
+
 export function getMenor() {
     return function(dispatch) {
         return fetch(`http://localhost:3001/api/search/producto`)
         .then(res => res.json())
         .then((data) => {
-            if (data !== undefined) {                
-
-                function selectionSort(data) {
-        
-                    for(var i = 0; i < data.length; i++){ 
-                        var min = i;
-                        for(var j = i + 1; j < data.length; j++){
-                            if(data[j].price < data[min].price){
-                                min = j;
-                            }
-                          }
-                          if(min !== i){
-                              var aux = data[i];
-                              data[i] = data[min];
-                              data[min] = aux;
-                          }
-                     }
-                     return data;
-                  
-                  }
-
+            if (data !== undefined) {              
+          
                 dispatch({ type: GET_MENOR, payload: selectionSort(data) })
             }
         });
     }
 };
 
+function reversedSort(data) {
+
+    var reversedArray = [];
+
+    for(var i = 0; i < data.length; i++){ 
+        var min = i;
+        for(var j = i + 1; j < data.length; j++){
+            if(data[j].price < data[min].price){
+                min = j;
+            }
+          }
+          if(min !== i){
+              var aux = data[i];
+              data[i] = data[min];
+              data[min] = aux;
+          }
+     }
+     
+     for(var i = 0; i < data.length; i++){
+        reversedArray.unshift(data[i])
+     }
+
+     return reversedArray;
+
+  }
+
 export function getMayor() {
     return function(dispatch) {
         return fetch(`http://localhost:3001/api/search/producto`)
         .then(res => res.json())
         .then((data) => {
-            if (data !== undefined) {                
-
-                function selectionSort(data) {
-
-                    var reversedArray = [];
-        
-                    for(var i = 0; i < data.length; i++){ 
-                        var min = i;
-                        for(var j = i + 1; j < data.length; j++){
-                            if(data[j].price < data[min].price){
-                                min = j;
-                            }
-                          }
-                          if(min !== i){
-                              var aux = data[i];
-                              data[i] = data[min];
-                              data[min] = aux;
-                          }
-                     }
-                     
-                     for(var i = 0; i < data.length; i++){
-                        reversedArray.unshift(data[i])
-                     }
-
-                     return reversedArray;
-     
-                  }
-
-                dispatch({ type: GET_MAYOR, payload: selectionSort(data) })
+            if (data !== undefined) {               
+         
+                dispatch({ type: GET_MAYOR, payload: reversedSort(data) })
             }
         });
     }
