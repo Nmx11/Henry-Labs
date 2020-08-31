@@ -202,8 +202,12 @@ export function nextPage() {
                 }            
                 
                 var arrayNextPage = [];
+
+                if(pageCache.length > 0 && pageCache.length < 30){
+                    return;
+                }
                 
-                if(pageCache.length > 1){
+                if(pageCache.length > 30){
 
                     for(var i = 30; i < estado.length; i++){
                     
