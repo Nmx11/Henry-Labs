@@ -15,7 +15,9 @@ export function Product ({ productos, id, title, price, currency_id, available_q
     <div>
      
       <Card className="card" style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={thumbnail || defecto} style={{ width: '17.9rem', height: '18rem'}}/>
+         <Link to={`producto/detail/${id}`}>
+           <Card.Img variant="top" src={thumbnail || defecto} style={{ width: '17.9rem', height: '18rem'}}/>
+        </Link>
         <Card.Body>
             <Card.Title>{title}</Card.Title>
           <Card.Text>
